@@ -1,8 +1,11 @@
 :root {
-  --primaryColor: rgb(46, 152, 205);
-  --primaryColor50: rgba(46, 152, 205, 0.5);
-  --secondaryColor: rgb(102, 102, 102);
-  --secondaryColor50: rgb(102, 102, 102, 0.5);
+  --primaryColor: rgb(100, 186, 230);
+  --primaryColor50: rgba(46, 152, 205, 0.461);
+  --primaryColorFont: 000;
+  --secondaryColor: rgb(42, 109, 143);
+
+  --primaryColorLight: rgb(100, 186, 230);
+  --primaryColorDark: rgb(30, 30, 30);
 }
 html,
 body {
@@ -17,9 +20,14 @@ header,
 nav,
 main,
 aside,
+footer,
 #menuContainer ul,
 #menuContainer li {
   display: flex;
+}
+
+a, span, button, input, p, li {
+    color: var(--primaryColorFont);
 }
 
 #siteContainer {
@@ -75,7 +83,7 @@ aside,
 }
 #menuContainer li {
   justify-content: center;
-  border-right: 1px solid var(--);
+  border-right: 1px solid #ddd;
   flex: 1;
 }
 
@@ -84,6 +92,7 @@ aside,
 }
 #layerListLeft {
   width: 250px;
+  background: var(--primaryColor);
 }
 #mapView {
   width: 100%;
@@ -94,19 +103,21 @@ aside,
   width: 250px;
   height: 100%;
   transition: all 0.5s ease-in-out;
-  background: var(--secondaryColor50);
+
 }
 
 #toggleButton {
   width: 30px;
   height: 115px;
-  background: rgb(241, 240, 216);
+  background: var(--primaryColor50);
   border-radius: 0 4px 4px 0;
   position: absolute;
-  left: 251px;
-  top: 370px;
+  left: 250px;
+  top: 150px;
   cursor: pointer;
   align-items: center;
+  z-index: 1;
+
 }
 #leftContainer.isvisible #toggleButton::before {
   content: "\f100";
@@ -122,4 +133,10 @@ aside,
 }
 #leftContainer:not(.isvisible) {
   margin-left: -250px;
+}
+footer { 
+    height: 50px;
+    padding:0;
+    background: var(--secondaryColor);
+    
 }

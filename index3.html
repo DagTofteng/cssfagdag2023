@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+        html { font-family: Arial, 'Times New Roman', Times, serif;
+    font-size: 18px;}
+      .container {
+        padding: 20px;
+      }
+      
+      .empty-element {
+        background-color: yellow;
+        display: block;
+        min-height: 30px;
+        width: 100%;
+      }
+      .empty-element:empty {
+        display: none;
+      }
+      
+      
+      .focus-within-container:focus-within {
+        background-color: yellow;
+      }
+      
+      .text-shadow-element {
+        font-size: 60px;
+        text-shadow: 8px 8px 8px rgba(0, 0, 0, 0.4);
+      }  
+      .container {
+        padding: 20px;
+        text-align: center;
+      }
+      
+      .fading-text {
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+      
+      .fading-text.show {
+        opacity: 1;
+      }
+      .circleContainer {
+        display: flex;
+        position: relative;
+        flex:1;
+        height: 200px;
+        border: 1px solid #666;
+        padding: 0;
+      }
+
+      .circle {
+        width: 300px;
+        height: 300px;
+        display: flex;
+        position: relative;
+        background-image: url("img/jawad.webp");
+        border-radius: 150px;
+        border-style: double;
+        animation: animate-circle 2s ease-in-out infinite alternate ;
+      }
+      .circle2 {
+        width: 300px;
+        height: 300px;
+        display: flex;
+        position: relative;
+        background-image: url("img/jornarild.jpg");
+        border-radius: 150px;
+        border-style: double;
+        animation: animate-circle 3s ease-in-out infinite alternate ;
+      }
+      
+      @keyframes animate-circle {
+        /* from {
+            background-color: red;
+            transform: translateX(0) translateY(0);
+        }
+        to {
+            background-color: blue;
+            transform: translateX(300px) translateY(100px);
+        } */
+        0% {
+            /* background-color: red; */
+            transform: translateX(0) translateY(0) rotate(0deg);
+        }
+        25% {
+            
+            transform: translateX(400px) translateY(0);
+        }
+        50% {
+            
+            transform: translateX(400px) translateY(150px);
+        }
+        75% {
+            
+            transform: translateX(0) translateY(150px);
+        }
+        100% {
+            /* background-color: blue; */
+            transform: translateX(0) translateY(0) rotate(359deg);
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container" >
+      <h2>The ":empty" selector</h2>
+
+      <button id="empty-button">Toggle text</button>
+      <div class="empty-element" id="emptyElemenentContainer">
+        Text has been added
+      </div>
+    </div>
+    
+
+    <div class="container focus-within-container">
+      <h2>The ":focus-within" selector</h2>
+      <button id="focus-within-button">Focus input</button>
+      <input type="text" id="focus-within-input">
+    </div>
+
+    
+    <div class="container">
+      <h2>The "text-shadow" property</h2>
+      <p class="text-shadow-element">This text has a subtle shadow</p>
+    </div>
+
+    <div class="container">
+        <h2>Fading Out and In Text</h2>
+        <button id="fade-button">Toggle Text</button>
+        <p id="fading-text" class="fading-text">This text will fade in and out</p>
+      </div>
+      
+      <div class="container circleContainer">
+        <div class="circle"></div>
+        <div class="circle2"></div>
+      </div>
+
+      <script>
+        var fadeButton = document.getElementById("fade-button");
+        var fadingText = document.getElementById("fading-text");
+        
+        fadeButton.addEventListener("click", function() {
+          fadingText.classList.toggle("show");
+        });
+      </script>
+    
+    <script>
+      document.getElementById("empty-button").addEventListener("click", function() {
+        var text = document.getElementById("emptyElemenentContainer");
+        if (text.innerHTML === "") {
+          text.innerHTML = "Text has been added";
+        } else {
+          text.innerHTML = "";
+        }
+      });
+      
+     
+document.getElementById("focus-within-button").addEventListener("click", function() {
+  document.getElementById("focus-within-input").focus();
+});
+
+
+</script>

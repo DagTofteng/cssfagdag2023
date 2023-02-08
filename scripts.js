@@ -9,23 +9,26 @@ require(["esri/views/SceneView", "esri/widgets/LayerList", "esri/WebScene"], (
     },
   });
 
-  //   const view = new SceneView({
-  //     container: "mapView",
-  //     map: scene,
-  //   });
+    const view = new SceneView({
+      container: "mapView",
+      map: scene,
+    });
 
-  //   view.when(() => {
-  //     const layerList = new LayerList({
-  //       view: view,
-  //       container: "layerListLeft",
-  //     });
-  //   });
+    view.when(() => {
+      const layerList = new LayerList({
+        view: view,
+        container: "layerListLeft",
+      });
+    });
 });
 
 function toggleLayerList() {
   document.getElementById("leftContainer").classList.toggle("isVisible");
 }
 
+var currentColor = "--primaryColorLight"
 function toggleDarkMode() {
-  document.documentElement.style.setProperty("--primaryColor", "red");
+  currentColor = currentColor == "--primaryColorLight" ? "--primaryColorDark" : "--primaryColorLight"
+  
+  document.documentElement.style.setProperty("--primaryColor", getComputedStyle(document.documentElement).getPropertyValue(currentColor));
 }

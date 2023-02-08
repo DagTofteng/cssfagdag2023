@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .container {
+        display: flex;
+        height: 300px;
+        border: 1px solid #666;
+        width: 300px;
+      }
+      
+      .circle {
+        width: 50px;
+        height: 50px;
+        background-color: blue;
+        border-radius: 25px;
+        animation: animate-circle 2s ease-in-out infinite alternate;
+      }
+      
+      @keyframes animate-circle {
+        from {
+            background-color: red;
+            transform: translateX(0) translateY(0);
+        }
+        to {
+            background-color: blue;
+            transform: translateX(100%) translateY(100%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="circle"></div>
+    </div>
+  </body>
+</html>
