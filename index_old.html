@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>CSS avdelingsmøte</title>
+
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.17/esri/themes/light/main.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+      integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/css/bootstrap-slider.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css"
+    />
+    <link href="Style/typeahead-bootstrap.css" rel="stylesheet" />
+    <link href="js/Other/formValidation/formValidation.css" rel="stylesheet" />
+    <link
+      href="js/Other/bootstrap-datepicker/bootstrap-datepicker.min.css"
+      rel="stylesheet"
+    />
+    <link href="Style/VMSStyles.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="styles_old.css" />
+
+    <script src="https://js.arcgis.com/4.17/"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+      function addRemoveText() {
+        var text = $("#possibleDiv").text();
+        if (text) {
+          $("#possibleDiv").html("");
+        } else {
+          $("#possibleDiv").html("<h2>Johnny har fått snøret i bånn!</h2>");
+        }
+      }
+
+      function toggleLeftMenu() {
+        $("#leftContainer").toggleClass("isvisible");
+      }
+    </script>
+
+    <script>
+      require([
+        "esri/views/MapView",
+        "esri/WebMap",
+        "esri/widgets/LayerList",
+      ], function (MapView, WebMap, LayerList) {
+        var webmap = new WebMap({
+          portalItem: {
+            id: "d0e193d9b3d74a818ac176dc381bb926",
+          },
+        });
+        var view = new MapView({
+          map: webmap,
+          container: "mapContainer",
+        });
+
+        view.when(function () {
+          var layerList = new LayerList({
+            view: view,
+            container: "layerlistDiv",
+          });
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="outerContainer">
+      <div id="headerContainer">
+        <div class="headerChild">
+          <img
+            src="https://www.betterthanpants.com/media/catalog/product/w/t/wtf--wheres-the-fish--funny-fishing-tshirt-large.png"
+            height="50px"
+          />
+          <h3>Johnny's fiskebutikk</h3>
+        </div>
+        <div class="headerChild">
+          <input type="text" placeholder="Søk adresse" />
+          <button onClick="addRemoveText()">Add/Remove tekst</button>
+          <div>InnerDiv</div>
+        </div>
+        <div class="headerChild"><a>Logg ut</a></div>
+      </div>
+      <div id="possibleDiv"></div>
+      <div id="leftContainer" class="isvisible">
+        <div id="toggleButton" onclick="toggleLeftMenu()"></div>
+        <div id="layerlistDiv"></div>
+      </div>
+      <div id="mapContainer"></div>
+    </div>
+  </body>
+</html>

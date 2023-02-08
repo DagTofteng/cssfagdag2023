@@ -1,26 +1,125 @@
-html {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
+:root {
+  --primaryColor: rgb(46, 152, 205);
+  --primaryColor50: rgba(46, 152, 205, 0.5);
+  --secondaryColor: rgb(102, 102, 102);
+  --secondaryColor50: rgb(102, 102, 102, 0.5);
 }
-div, ul, li { display: flex;}
-/* Example 2 - Start */
-
-.siteContainer { 
-    display: flex; 
-    flex-direction: column; 
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 208, 0, 0.4);
-
+html,
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+  background: var(--primaryColor);
 }
-.logo { height: 80px; }
-.headerContainer { 
-    background: rgb(68, 180, 255); 
-    height: 100px; 
-    /* display: flex; 
-    align-items: center;  */
+div,
+header,
+nav,
+main,
+aside,
+#menuContainer ul,
+#menuContainer li {
+  display: flex;
 }
-.menuContainer { background: blue; height: 30%; display: flex; justify-content: center; align-items: center;}
-.contentContainer { background: green; }
 
-/* Example 2 - End */
+#siteContainer {
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  /* padding: 20px; */
+  box-sizing: border-box;
+  background: black;
+}
+#headerContainer {
+  box-sizing: border-box;
+  background: var(--primaryColor);
+  height: 130px;
+}
+#headerContainer_logo {
+  flex: 1;
+  align-items: center;
+  padding-left: 20px;
+}
+#headerContainer_logo img {
+  height: 40px;
+}
+#headerContainer_search {
+  flex: 2;
+  align-items: center;
+  justify-content: end;
+  padding-right: 20px;
+}
+#headerContainer_search .textbox {
+  height: 30px;
+  width: 150px;
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+#headerContainer_search button {
+  height: 30px;
+}
+
+#menuContainer {
+  background: var(--secondaryColor);
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+#menuContainer ul {
+  padding: 0;
+  flex: 50%;
+  justify-content: space-between;
+  align-items: center;
+}
+#menuContainer li {
+  justify-content: center;
+  border-right: 1px solid var(--);
+  flex: 1;
+}
+
+#contentContainer {
+  height: 100%;
+}
+#layerListLeft {
+  width: 250px;
+}
+#mapView {
+  width: 100%;
+  height: 100%;
+}
+#leftContainer {
+  position: relative;
+  width: 250px;
+  height: 100%;
+  transition: all 0.5s ease-in-out;
+  background: var(--secondaryColor50);
+}
+
+#toggleButton {
+  width: 30px;
+  height: 115px;
+  background: rgb(241, 240, 216);
+  border-radius: 0 4px 4px 0;
+  position: absolute;
+  left: 251px;
+  top: 370px;
+  cursor: pointer;
+  align-items: center;
+}
+#leftContainer.isvisible #toggleButton::before {
+  content: "\f100";
+  font-family: "Font Awesome\ 5 Free";
+  font-size: 26px;
+  font-weight: 900;
+}
+#leftContainer:not(.isvisible) #toggleButton::before {
+  content: "\f101";
+  font-family: "Font Awesome\ 5 Free";
+  font-size: 26px;
+  font-weight: 900;
+}
+#leftContainer:not(.isvisible) {
+  margin-left: -250px;
+}
