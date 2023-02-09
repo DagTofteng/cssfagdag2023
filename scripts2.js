@@ -12,6 +12,7 @@ require(["esri/views/SceneView", "esri/widgets/LayerList", "esri/WebScene"], (
     const view = new SceneView({
       container: "mapView",
       map: scene,
+      
     });
 
     view.when(() => {

@@ -49,7 +49,7 @@
         padding: 0;
       }
 
-      .circle {
+      #circle1 {
         width: 300px;
         height: 300px;
         display: flex;
@@ -59,7 +59,7 @@
         border-style: double;
         animation: animate-circle 2s ease-in-out infinite alternate ;
       }
-      .circle2 {
+      #circle2 {
         width: 300px;
         height: 300px;
         display: flex;
@@ -68,6 +68,9 @@
         border-radius: 150px;
         border-style: double;
         animation: animate-circle 3s ease-in-out infinite alternate ;
+      }
+      .hidden {
+        display: none!important;
       }
       
       @keyframes animate-circle {
@@ -132,9 +135,11 @@
         <p id="fading-text" class="fading-text">This text will fade in and out</p>
       </div>
       
+      <button id="circlesbutton">Trigger circles</button>
+        
       <div class="container circleContainer">
-        <div class="circle"></div>
-        <div class="circle2"></div>
+        <div id="circle1" class="hidden"></div>
+        <div id="circle2" class="hidden"></div>
       </div>
 
       <script>
@@ -144,6 +149,22 @@
         fadeButton.addEventListener("click", function() {
           fadingText.classList.toggle("show");
         });
+
+        var circlesbutton = document.getElementById("circlesbutton");
+        var circle1 = document.getElementById("circle1");
+        var circle2 = document.getElementById("circle2");
+        var count = 0;
+        circlesbutton.addEventListener("click", function() {
+            if (count==1) {
+                circle2.classList.toggle("hidden");
+                return true;
+            }  
+
+          circle1.classList.toggle("hidden");
+          count++;
+          
+        });
+        
       </script>
     
     <script>
